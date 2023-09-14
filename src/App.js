@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [userName, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+
+    console.log("login in...")
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="backdrop"></div>
+      <div className="content">
+        <h1>Reddit clone</h1>
+        <p>Username</p>
+        <input
+          value={userName}
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+          // placeholder="Username"
+        ></input>
+        <p>Password</p>
+        <input
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          // placeholder="Password"
+        ></input>
+        <button onClick={loginHandler}>LOGIN</button>
+      </div>
     </div>
   );
 }
